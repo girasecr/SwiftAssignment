@@ -30,7 +30,7 @@ Auto Layout
 # SwiftLint
 For Style and Convetions
 
-Installed throgh brew swiftlint
+Installed through brew install swiftlint
 
 # Unit Test Cases
 
