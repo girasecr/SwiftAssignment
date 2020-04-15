@@ -13,37 +13,23 @@ import UIKit
 struct Basic {
     static let url = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     static let apiKey = ""
-    static var TIME_OUT = 60.0
+    static var timeout = 60.0
     let headerUsername = ""
     let headerPassword = ""
 }
 
 public struct HEADERS {
-    static let urlEncoded: [String: String] = ["Content-Type":"application/x-www-form-urlencoded; charset=UTF-8","Accept":"application/json; charset=UTF-8","cache-control": "no-cache"]
-    static let appJson: [String: String] = ["Content-Type":"application/json; charset=UTF-8", "Accept":"application/json; charset=UTF-8","cache-control": "no-cache"]
+    static let urlEncoded: [String: String] = ["Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", "Accept": "application/json; charset=UTF-8", "cache-control": "no-cache"]
+    static let appJson: [String: String] = ["Content-Type": "application/json; charset=UTF-8", "Accept": "application/json; charset=UTF-8", "cache-control": "no-cache"]
     static let multipart: [String: String] = ["Content-type": "multipart/form-data"]
 }
 
-struct API_SUBDOMAIN {
-    // place holder module name
-    static let ENVIRONMENT = ""
-}
-
-struct API_ENDPOINT {
-    // place holder method name
-    static let PSI = ""
-}
-
 class APIConfiguration {
-    var api_SubDomain: String
-    var api_EndPoint: String
     var extraParameters: String
     var httpMethod: HTTPMethod
     var requestObject: Encodable?
 
-    init(api_SubDomain: String = "", api_EndPoint: String = "", extraParameters: String = "", httpMethod: HTTPMethod = .get, requestObject: Encodable? = nil) {
-        self.api_SubDomain = api_SubDomain
-        self.api_EndPoint = api_EndPoint
+    init(extraParameters: String = "", httpMethod: HTTPMethod = .get, requestObject: Encodable? = nil) {
         self.extraParameters = extraParameters
         self.httpMethod = httpMethod
         self.requestObject = requestObject
@@ -51,12 +37,12 @@ class APIConfiguration {
 
     fileprivate func getUrl() -> URL? {
 
-        let urlString = String(format: "%@%@%@%@", Basic.url, self.api_SubDomain, self.api_EndPoint, self.extraParameters)
+        let urlString = String(format: "%@%@", Basic.url, self.extraParameters)
         print("*** Request Url ***\n\(urlString)")
         return URL.init(string: urlString)
     }
 
-    fileprivate func httpBody()-> Data? {
+    fileprivate func httpBody() -> Data? {
         var data: Data?
         if let jsonData = self.requestObject?.toJSONData() {
             let jsonString = String(data: jsonData, encoding: .utf8) ?? ""
@@ -68,7 +54,7 @@ class APIConfiguration {
 
     func configuration() -> URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = Basic.TIME_OUT
+        configuration.timeoutIntervalForRequest = Basic.timeout
         return configuration
     }
 

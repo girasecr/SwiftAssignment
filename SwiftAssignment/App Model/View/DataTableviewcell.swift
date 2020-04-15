@@ -21,11 +21,11 @@ class DataTableviewCell: UITableViewCell {
         static let cellIdentifier = "DataTableviewCell"
     }
     
-    static func cellIdentifier()-> String {
+    static func cellIdentifier() -> String {
         return CONSTANTS.cellIdentifier
     }
     
-    var row:Row? {
+    var row: Row? {
         didSet {
             guard let rowItem = row else {return}
             titleLabel.text = rowItem.title
@@ -33,14 +33,13 @@ class DataTableviewCell: UITableViewCell {
             
             if let imageURL = rowItem.imageHref {
                 setImage(from: imageURL)
-            }
-            else {
+            } else {
                 self.profileImageView.image = UIImage(named: "defaultthumb.png")
             }
         }
     }
     
-    let profileImageView:UIImageView = {
+    let profileImageView: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill // image will never be strecthed vertially or horizontally
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
@@ -50,7 +49,7 @@ class DataTableviewCell: UITableViewCell {
         return img
     }()
     
-    let titleLabel:UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .black
@@ -58,7 +57,7 @@ class DataTableviewCell: UITableViewCell {
         return label
     }()
     
-    let descriptionLabel:UILabel = {
+    let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor =  .lightGray

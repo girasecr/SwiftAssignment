@@ -11,30 +11,29 @@ import UIKit
 
 class RequestManager {
 
-    class var sharedInstance :RequestManager {
+    class var sharedInstance: RequestManager {
         struct Singleton {
             static let instance = RequestManager()
         }
-        return Singleton.instance
+        return Singleton.instance 
     }
 
+    
     func withGet(apiConfiguration: APIConfiguration, completionHandler: @escaping JSONCompletionHandler) {
         let configuration = apiConfiguration.configuration()
         let session = URLSession(configuration: configuration)
 
         if let urlRequest = apiConfiguration.getURLRequest() {
-            session.dataTask(with: urlRequest) { (data, response, error) in
+            session.dataTask(with: urlRequest) { (data, _, error) in
                 if let data = data {
                     
                     if let json = String(data: data, encoding: String.Encoding.isoLatin1) {
                         print("*** Response Json *** \n\(json)")
                         completionHandler(json, nil)
-                    }
-                    else {
+                    } else {
                         completionHandler(nil, error)
                     }
-                }
-                else {
+                } else {
                     completionHandler(nil, error)
                 }
             }.resume()
@@ -46,17 +45,15 @@ class RequestManager {
         let session = URLSession(configuration: configuration)
 
         if let urlRequest = apiConfiguration.postURLRequest() {
-            session.dataTask(with: urlRequest) { (data, response, error) in
+            session.dataTask(with: urlRequest) { (data, _, error) in
                 if let data = data {
                     if let json = String(data: data, encoding: String.Encoding.utf8) {
                         print("*** Response Json *** \n\(json)")
                         completionHandler(json, nil)
-                    }
-                    else {
+                    } else {
                         completionHandler(nil, error)
                     }
-                }
-                else {
+                } else {
                     completionHandler(nil, error)
                 }
             }.resume()

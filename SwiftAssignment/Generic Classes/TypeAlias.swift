@@ -8,7 +8,4 @@
 
 import Foundation
 
-typealias isCompleted = () -> Void
 typealias JSONCompletionHandler = (String?, Error?) -> Void
-typealias completionHandler = JSONCompletionHandler
-

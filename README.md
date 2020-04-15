@@ -27,6 +27,11 @@ UITableviewAutomaticDimension
 # SnapKit/Masonry Framework
 Auto Layout 
 
+# SwiftLint
+For Style and Convetions
+
+Installed throgh brew swiftlint
+
 # Unit Test Cases
 
 

@@ -54,10 +54,10 @@ class DataListViewController: UIViewController {
         
         //Add tableview constraint
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         //Set tableview delegate and datasource
         tableView.dataSource = self
@@ -99,14 +99,14 @@ extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: DataTableviewCell.cellIdentifier(), for: indexPath) as! DataTableviewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: DataTableviewCell.cellIdentifier(), for: indexPath) as? DataTableviewCell
         
         let rowData = viewModel?.rowsArray[indexPath.row]
-        cell.row = rowData
-        cell.layer.shouldRasterize = true
-        cell.layer.rasterizationScale = UIScreen.main.scale
+        cell?.row = rowData
+        cell?.layer.shouldRasterize = true
+        cell?.layer.rasterizationScale = UIScreen.main.scale
         
-        return cell
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -139,7 +139,7 @@ extension DataListViewController {
 // MARK: - Reachability Delegate Methods
 //**************************************************
 
-extension DataListViewController : ReachabilityProtocol {
+extension DataListViewController: ReachabilityProtocol {
     func networkConnectionDidConnected() {
         
         DispatchQueue.main.async {
