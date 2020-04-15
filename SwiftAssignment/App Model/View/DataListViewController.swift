@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Reachability
 
 class DataListViewController: UIViewController {
     
@@ -26,7 +25,6 @@ class DataListViewController: UIViewController {
     private var viewModel: DataViewModel? // ViewModel
     let tableView = UITableView() // view
     var refreshControl = UIRefreshControl()
-    let reachability = try! Reachability()
     
     //**************************************************
     // MARK: View life cycle
@@ -37,36 +35,44 @@ class DataListViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        setupTavleview()
+        loadModelData()
+        setupPullToRefresh()
+    }
+    
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        addReachabilityNotifier()
+    //    }
+    
+    //**************************************************
+    // MARK: - Required Methods
+    //**************************************************
+    
+    private func setupTavleview() {
         view.addSubview(tableView)
         
+        //Add tableview constraint
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
+        //Set tableview delegate and datasource
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = false
         
+        //Register tableview cell
         tableView.register(DataTableviewCell.self, forCellReuseIdentifier: DataTableviewCell.cellIdentifier())
-        
-        loadModelData()
-        setupPullToRefresh()
         tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        addReachabilityNotifier()
-    }
-    
-    //**************************************************
-    // MARK: - Required Methods
-    //**************************************************
-    
     private func loadModelData() {
-        viewModel = DataViewModel.init()
+        viewModel = DataViewModel()
+        viewModel?.addReachabilityNotifier()
+        viewModel?.reachabilityDelegate = self //Setting reachability delegate
         observeEvents()
     }
     
@@ -78,10 +84,6 @@ class DataListViewController: UIViewController {
                 self?.tableView.reloadData()
             })
         }
-    }
-    
-    deinit {
-        stopReachAabilityNotifier()
     }
 }
 
@@ -134,32 +136,23 @@ extension DataListViewController {
 }
 
 //**************************************************
-// MARK: - Reachability Listner Methods
+// MARK: - Reachability Delegate Methods
 //**************************************************
 
-extension DataListViewController {
-    private func addReachabilityNotifier(){
-        //Show Alert if no internet connection
+extension DataListViewController : ReachabilityProtocol {
+    func networkConnectionDidConnected() {
         
-        reachability.whenReachable = { [weak self] reachability in
-            DispatchQueue.main.async {
-                self?.loadModelData()
-            }
+        DispatchQueue.main.async {
+            self.viewModel?.loadApiData()
         }
-        
-        reachability.whenUnreachable = {  [weak self] _ in
-            
-            let alert = UIAlertController(title: CONSTANTS.alertTitle, message: CONSTANTS.alertMessage, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: CONSTANTS.alertButtonTitle, style: UIAlertAction.Style.default, handler: nil))
-            self?.present(alert, animated: true, completion: nil)
-        }
-        
-        do{
-            try reachability.startNotifier()
-        }catch{  }
     }
     
-    private func stopReachAabilityNotifier() {
-        reachability.stopNotifier()
+    func networkConnectionDidDisconnected() {
+        
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: CONSTANTS.alertTitle, message: CONSTANTS.alertMessage, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: CONSTANTS.alertButtonTitle, style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
