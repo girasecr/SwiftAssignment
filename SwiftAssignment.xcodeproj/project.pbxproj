@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0305863A676429C5D9E41BF7 /* Pods_SwiftAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383F45F4C335903CCFF2B4CC /* Pods_SwiftAssignment.framework */; };
 		858AAFFB2448486600A19318 /* SwiftAssignmentBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AAFFA2448486600A19318 /* SwiftAssignmentBaseTest.swift */; };
 		858AAFFD2448495D00A19318 /* DataTableviewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AAFFC2448495D00A19318 /* DataTableviewCellTests.swift */; };
 		858AAFFF24484AB800A19318 /* DataViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AAFFE24484AB800A19318 /* DataViewModelTests.swift */; };
@@ -29,10 +30,6 @@
 		85FF53052444626B00F1929F /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85FF53002444626B00F1929F /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		85FF53062444626B00F1929F /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FF53012444626B00F1929F /* AlamofireImage.framework */; };
 		85FF53072444626B00F1929F /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85FF53012444626B00F1929F /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		85FF53082444626B00F1929F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FF53022444626B00F1929F /* SnapKit.framework */; };
-		85FF53092444626B00F1929F /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85FF53022444626B00F1929F /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		85FF530A2444626B00F1929F /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FF53032444626B00F1929F /* Reachability.framework */; };
-		85FF530B2444626B00F1929F /* Reachability.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85FF53032444626B00F1929F /* Reachability.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +56,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				85FF53092444626B00F1929F /* SnapKit.framework in Embed Frameworks */,
 				85FF53052444626B00F1929F /* Alamofire.framework in Embed Frameworks */,
 				85FF53072444626B00F1929F /* AlamofireImage.framework in Embed Frameworks */,
-				85FF530B2444626B00F1929F /* Reachability.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		383F45F4C335903CCFF2B4CC /* Pods_SwiftAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68210D760DBAFA7870D0FDAE /* Pods-SwiftAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftAssignment.release.xcconfig"; path = "Target Support Files/Pods-SwiftAssignment/Pods-SwiftAssignment.release.xcconfig"; sourceTree = "<group>"; };
 		858AAFFA2448486600A19318 /* SwiftAssignmentBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAssignmentBaseTest.swift; sourceTree = "<group>"; };
 		858AAFFC2448495D00A19318 /* DataTableviewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableviewCellTests.swift; sourceTree = "<group>"; };
 		858AAFFE24484AB800A19318 /* DataViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModelTests.swift; sourceTree = "<group>"; };
@@ -97,6 +94,7 @@
 		85FF53012444626B00F1929F /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		85FF53022444626B00F1929F /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		85FF53032444626B00F1929F /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
+		BF3742AAEEC12A71C1268B1B /* Pods-SwiftAssignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftAssignment.debug.xcconfig"; path = "Target Support Files/Pods-SwiftAssignment/Pods-SwiftAssignment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +102,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85FF53082444626B00F1929F /* SnapKit.framework in Frameworks */,
 				85FF53042444626B00F1929F /* Alamofire.framework in Frameworks */,
 				85FF53062444626B00F1929F /* AlamofireImage.framework in Frameworks */,
-				85FF530A2444626B00F1929F /* Reachability.framework in Frameworks */,
+				0305863A676429C5D9E41BF7 /* Pods_SwiftAssignment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +142,7 @@
 				85B481D72444451C001FE22C /* SwiftAssignmentUITests */,
 				85B481B42444451A001FE22C /* Products */,
 				85FF52FF2444626B00F1929F /* Frameworks */,
+				ADF2E00981F385C08A547DF8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -270,8 +268,18 @@
 				85FF53012444626B00F1929F /* AlamofireImage.framework */,
 				85FF53032444626B00F1929F /* Reachability.framework */,
 				85FF53022444626B00F1929F /* SnapKit.framework */,
+				383F45F4C335903CCFF2B4CC /* Pods_SwiftAssignment.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADF2E00981F385C08A547DF8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF3742AAEEC12A71C1268B1B /* Pods-SwiftAssignment.debug.xcconfig */,
+				68210D760DBAFA7870D0FDAE /* Pods-SwiftAssignment.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,11 +289,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85B481DD2444451C001FE22C /* Build configuration list for PBXNativeTarget "SwiftAssignment" */;
 			buildPhases = (
+				F777696A82B475100FF9F0A6 /* [CP] Check Pods Manifest.lock */,
 				85B481AF2444451A001FE22C /* Sources */,
 				85B481B02444451A001FE22C /* Frameworks */,
 				85B481B12444451A001FE22C /* Resources */,
 				85FF530C2444626C00F1929F /* Embed Frameworks */,
 				858F926D24471EE500927981 /* ShellScript */,
+				6EB64CF2182497055F1382FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -403,6 +413,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6EB64CF2182497055F1382FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftAssignment/Pods-SwiftAssignment-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftAssignment/Pods-SwiftAssignment-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftAssignment/Pods-SwiftAssignment-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		858F926D24471EE500927981 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -419,6 +446,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		F777696A82B475100FF9F0A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftAssignment-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -601,6 +650,7 @@
 		};
 		85B481DE2444451C001FE22C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF3742AAEEC12A71C1268B1B /* Pods-SwiftAssignment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -609,6 +659,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = SwiftAssignment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -622,6 +673,7 @@
 		};
 		85B481DF2444451C001FE22C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68210D760DBAFA7870D0FDAE /* Pods-SwiftAssignment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -630,6 +682,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = SwiftAssignment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
