@@ -12,7 +12,7 @@ import XCTest
 class DataTableviewCellTests: XCTestCase {
     
     var profileImageView: UIImageView!
-    var tempImageUrl: String = "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/220px-American_Beaver.jpg"
+    var tempImageUrl: String = "https://i49.photobucket.com/albums/f260/starfoxfan/fursona.jpg"
     
     //**************************************************
     // MARK: Test Cases Life Cycle
