@@ -18,6 +18,9 @@ class DataTableviewCell: UITableViewCell {
     //**************************************************
     struct CONSTANTS {
         static let cellIdentifier = "DataTableviewCell"
+        static let titleAccessibilityIdentifier = "label-cellTitleLabel"
+        static let descAccessibilityIdentifier = "label--cellDescriptionLabel"
+        static let profileImageAccessibilityIdentifier = "imageView--cellProfileImageView"
     }
     
     static func cellIdentifier() -> String {
@@ -44,7 +47,7 @@ class DataTableviewCell: UITableViewCell {
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
         img.layer.cornerRadius = 5
         img.clipsToBounds = true
-        
+        img.accessibilityIdentifier = CONSTANTS.profileImageAccessibilityIdentifier
         return img
     }()
     
@@ -53,6 +56,7 @@ class DataTableviewCell: UITableViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = CONSTANTS.titleAccessibilityIdentifier
         return label
     }()
     
@@ -64,6 +68,7 @@ class DataTableviewCell: UITableViewCell {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = CONSTANTS.descAccessibilityIdentifier
         return label
     }()
     

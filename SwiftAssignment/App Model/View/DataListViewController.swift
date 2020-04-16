@@ -19,6 +19,7 @@ class DataListViewController: UIViewController {
         static let aTitle = "No Internet Connection"
         static let aMsg = "Internet Connection is required fot this application to run properly"
         static let aButtonName = "Ok"
+        static let tableAccessibilityIdentifier = "table--dataTableView"
     }
     
     private var viewModel: DataViewModel?
@@ -49,6 +50,7 @@ class DataListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = false
+        tableView.accessibilityIdentifier = CONSTANTS.tableAccessibilityIdentifier
         tableView.register(DataTableviewCell.self, forCellReuseIdentifier: DataTableviewCell.cellIdentifier())
         tableView.tableFooterView = UIView()
     }
@@ -127,10 +129,14 @@ extension DataListViewController: ReachabilityProtocol {
     
     func networkConnectionDidDisconnected() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: CONSTANTS.aTitle, message: CONSTANTS.aMsg, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: CONSTANTS.aButtonName, style: .default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
+            self.showNeworkAlert()
         }
+    }
+    
+    func showNeworkAlert() {
+        let alert = UIAlertController(title: CONSTANTS.aTitle, message: CONSTANTS.aMsg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: CONSTANTS.aButtonName, style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
