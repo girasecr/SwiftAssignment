@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class DataListViewController: UIViewController {
-    
+
     //**************************************************
     // MARK: Properties/Constants
     //**************************************************
@@ -21,11 +21,11 @@ class DataListViewController: UIViewController {
         static let aButtonName = "Ok"
         static let tableAccessibilityIdentifier = "table--dataTableView"
     }
-    
+
     var viewModel: DataViewModel?
-    let tableView = UITableView() 
+    let tableView = UITableView()
     var refreshControl = UIRefreshControl()
-    
+
     //**************************************************
     // MARK: View life cycle
     //**************************************************
@@ -36,7 +36,7 @@ class DataListViewController: UIViewController {
         loadModelData()
         setupPullToRefresh()
     }
-    
+
     //**************************************************
     // MARK: - Required Methods
     //**************************************************
@@ -54,14 +54,14 @@ class DataListViewController: UIViewController {
         tableView.register(DataTableviewCell.self, forCellReuseIdentifier: DataTableviewCell.cellIdentifier())
         tableView.tableFooterView = UIView()
     }
-    
+
     private func loadModelData() {
         viewModel = DataViewModel()
         viewModel?.addReachabilityNotifier()
         viewModel?.reachabilityDelegate = self
         observeEvents()
     }
-    
+
     private func observeEvents() {
         viewModel?.updateUI = { [weak self] in
             DispatchQueue.main.async(execute: {
@@ -76,23 +76,23 @@ class DataListViewController: UIViewController {
 // MARK: Delegate methods UITableViewDataSource, UITableViewDelegate
 //**************************************************
 extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRows ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = DataTableviewCell.cellIdentifier()
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? DataTableviewCell
         let rowData = viewModel?.rowsArray[indexPath.row]
         cell?.row = rowData
         cell?.layer.shouldRasterize = true
         cell?.layer.rasterizationScale = UIScreen.main.scale
-        
+
         return cell ?? UITableViewCell()
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -102,13 +102,13 @@ extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: Pull to refresh
 //**************************************************
 extension DataListViewController {
-    
+
     private func setupPullToRefresh() {
         refreshControl.attributedTitle = NSAttributedString(string: CONSTANTS.pullToRefresh)
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         tableView.addSubview(refreshControl)
     }
-    
+
     @objc func refresh() {
         DispatchQueue.main.async(execute: {
             self.viewModel?.loadApiData()
@@ -126,17 +126,17 @@ extension DataListViewController: ReachabilityProtocol {
             self.viewModel?.loadApiData()
         }
     }
-    
+
     func networkConnectionDidDisconnected() {
         DispatchQueue.main.async {
             self.showNeworkAlert()
         }
     }
-    
+
     func showNeworkAlert() {
         let alert = UIAlertController(title: CONSTANTS.aTitle, message: CONSTANTS.aMsg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: CONSTANTS.aButtonName, style: .default, handler: nil))
-        
+
         self.present(alert, animated: true, completion: nil)
     }
 }

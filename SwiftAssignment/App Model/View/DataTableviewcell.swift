@@ -12,7 +12,7 @@ import AlamofireImage
 import SnapKit
 
 class DataTableviewCell: UITableViewCell {
-    
+
     //**************************************************
     // MARK: Properties/Constants
     //**************************************************
@@ -22,17 +22,17 @@ class DataTableviewCell: UITableViewCell {
         static let descAccessibilityIdentifier = "label--cellDescriptionLabel"
         static let profileImageAccessibilityIdentifier = "imageView--cellProfileImageView"
     }
-    
+
     static func cellIdentifier() -> String {
         return CONSTANTS.cellIdentifier
     }
-    
+
     var row: Row? {
         didSet {
             guard let rowItem = row else {return}
             titleLabel.text = rowItem.title
             descriptionLabel.text = rowItem.rowDescription
-            
+
             if let imageURL = rowItem.imageHref {
                 setImage(from: imageURL)
             } else {
@@ -40,7 +40,7 @@ class DataTableviewCell: UITableViewCell {
             }
         }
     }
-    
+
     let profileImageView: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill // image will never be strecthed vertially or horizontally
@@ -50,7 +50,7 @@ class DataTableviewCell: UITableViewCell {
         img.accessibilityIdentifier = CONSTANTS.profileImageAccessibilityIdentifier
         return img
     }()
-    
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -59,7 +59,7 @@ class DataTableviewCell: UITableViewCell {
         label.accessibilityIdentifier = CONSTANTS.titleAccessibilityIdentifier
         return label
     }()
-    
+
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -71,23 +71,23 @@ class DataTableviewCell: UITableViewCell {
         label.accessibilityIdentifier = CONSTANTS.descAccessibilityIdentifier
         return label
     }()
-    
+
     //**************************************************
     // MARK: Initializer
     //**************************************************
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         self.contentView.addSubview(profileImageView)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(descriptionLabel)
         setAutolayoutConstraintToViews()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     //**************************************************
     // MARK: Private Methods
     //**************************************************
@@ -97,14 +97,14 @@ class DataTableviewCell: UITableViewCell {
             make.leading.equalTo(self.contentView.snp.leading).offset(10)
             make.size.equalTo(CGSize(width: 60, height: 60))
         }
-        
+
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(self.contentView.snp.top).offset(0)
             make.leading.equalTo(self.profileImageView.snp.leading).offset(70)
             make.trailing.equalTo(self.contentView.snp.trailing).offset(-10)
             make.height.equalTo(40)
         }
-        
+
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(0)
             make.leading.equalTo(self.titleLabel.snp.leading)
@@ -113,7 +113,7 @@ class DataTableviewCell: UITableViewCell {
             make.height.greaterThanOrEqualTo(21)
         }
     }
-    
+
     private func setImage(from url: String) {
         guard let imageURL = URL(string: url) else { return }
         let placeholderImage = UIImage(named: "defaultthumb.png")

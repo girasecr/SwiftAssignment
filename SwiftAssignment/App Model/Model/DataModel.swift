@@ -18,7 +18,7 @@ struct DataModel: Codable {
 struct Row: Codable {
     let title, rowDescription: String?
     let imageHref: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case title
         case rowDescription = "description"

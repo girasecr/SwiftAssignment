@@ -12,24 +12,24 @@ import XCTest
 let kTimeOut = 10.0
 
 class SwiftAssignmentBaseTest: XCTestCase {
-    
+
     //**************************************************
     // MARK: Test Cases Life Cycle
     //**************************************************
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
+
     //**************************************************
     // MARK: Load API Data from the Local JSON file instead of going to the Back-End
     //**************************************************
     func getAPIData(forResource: String, ofType: String, completion: @escaping(Data?, Error?) -> Void) {
         let testBundle = Bundle(for: type(of: self))
-        
+
         if let path = testBundle.path(forResource: forResource, ofType: ofType) {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
@@ -41,11 +41,11 @@ class SwiftAssignmentBaseTest: XCTestCase {
             completion(nil, nil)
         }
     }
-    
+
     func getModelData(forResource: String, ofType: String, completion: @escaping(Data?, Error?) -> Void) {
         getAPIData(forResource: forResource, ofType: ofType, completion: completion)
     }
-    
+
     //**************************************************
     // MARK: Common Methods
     //**************************************************
@@ -58,7 +58,7 @@ class SwiftAssignmentBaseTest: XCTestCase {
         dataTask.resume()
         wait(for: [expectation], timeout: kTimeOut)
     }
-    
+
     func testGetResponse(url: URLRequest, completion: @escaping (Data?, Error?) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard error == nil else {
