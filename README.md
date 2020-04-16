@@ -10,6 +10,9 @@ Swift 5
 Used URLSession for rest api call.
 APi Url => "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 
+# Cocoapods
+User for Reachability and Snapkit.Masonary framework
+
 # Carthage
 Used AlomofireImage Framework => To download images and process with UI.
 
