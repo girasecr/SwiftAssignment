@@ -22,7 +22,7 @@ class DataListViewController: UIViewController {
         static let tableAccessibilityIdentifier = "table--dataTableView"
     }
     
-    private var viewModel: DataViewModel?
+    var viewModel: DataViewModel?
     let tableView = UITableView() 
     var refreshControl = UIRefreshControl()
     
