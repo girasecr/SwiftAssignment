@@ -10,25 +10,22 @@ import Foundation
 import UIKit
 
 class RequestManager {
-
+    
     class var sharedInstance: RequestManager {
         struct Singleton {
             static let instance = RequestManager()
         }
         return Singleton.instance 
     }
-
     
     func withGet(apiConfiguration: APIConfiguration, completionHandler: @escaping JSONCompletionHandler) {
         let configuration = apiConfiguration.configuration()
         let session = URLSession(configuration: configuration)
-
+        
         if let urlRequest = apiConfiguration.getURLRequest() {
             session.dataTask(with: urlRequest) { (data, _, error) in
                 if let data = data {
-                    
                     if let json = String(data: data, encoding: String.Encoding.isoLatin1) {
-                        print("*** Response Json *** \n\(json)")
                         completionHandler(json, nil)
                     } else {
                         completionHandler(nil, error)
@@ -39,16 +36,15 @@ class RequestManager {
             }.resume()
         }
     }
-
+    
     func withPost(apiConfiguration: APIConfiguration, completionHandler: @escaping JSONCompletionHandler) {
         let configuration = apiConfiguration.configuration()
         let session = URLSession(configuration: configuration)
-
+        
         if let urlRequest = apiConfiguration.postURLRequest() {
             session.dataTask(with: urlRequest) { (data, _, error) in
                 if let data = data {
                     if let json = String(data: data, encoding: String.Encoding.utf8) {
-                        print("*** Response Json *** \n\(json)")
                         completionHandler(json, nil)
                     } else {
                         completionHandler(nil, error)

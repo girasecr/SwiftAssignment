@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		858AAFFB2448486600A19318 /* SwiftAssignmentBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AAFFA2448486600A19318 /* SwiftAssignmentBaseTest.swift */; };
+		858AAFFD2448495D00A19318 /* DataTableviewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AAFFC2448495D00A19318 /* DataTableviewCellTests.swift */; };
+		858AAFFF24484AB800A19318 /* DataViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AAFFE24484AB800A19318 /* DataViewModelTests.swift */; };
+		858AB00124484B9200A19318 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 858AB00024484B9200A19318 /* TestData.json */; };
+		858AB00224484C1D00A19318 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FF53012444626B00F1929F /* AlamofireImage.framework */; };
 		85B481B72444451A001FE22C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B481B62444451A001FE22C /* AppDelegate.swift */; };
 		85B481C02444451C001FE22C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B481BF2444451C001FE22C /* Assets.xcassets */; };
 		85B481C32444451C001FE22C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B481C12444451C001FE22C /* LaunchScreen.storyboard */; };
-		85B481CE2444451C001FE22C /* SwiftAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B481CD2444451C001FE22C /* SwiftAssignmentTests.swift */; };
 		85B481D92444451C001FE22C /* SwiftAssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B481D82444451C001FE22C /* SwiftAssignmentUITests.swift */; };
 		85FF52EE24445C7C00F1929F /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FF52ED24445C7C00F1929F /* RequestManager.swift */; };
 		85FF52F024445C9A00F1929F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FF52EF24445C9A00F1929F /* APIConfiguration.swift */; };
@@ -66,13 +70,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		858AAFFA2448486600A19318 /* SwiftAssignmentBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAssignmentBaseTest.swift; sourceTree = "<group>"; };
+		858AAFFC2448495D00A19318 /* DataTableviewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableviewCellTests.swift; sourceTree = "<group>"; };
+		858AAFFE24484AB800A19318 /* DataViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModelTests.swift; sourceTree = "<group>"; };
+		858AB00024484B9200A19318 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 		85B481B32444451A001FE22C /* SwiftAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B481B62444451A001FE22C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B481BF2444451C001FE22C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85B481C22444451C001FE22C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85B481C42444451C001FE22C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85B481C92444451C001FE22C /* SwiftAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		85B481CD2444451C001FE22C /* SwiftAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAssignmentTests.swift; sourceTree = "<group>"; };
 		85B481CF2444451C001FE22C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85B481D42444451C001FE22C /* SwiftAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B481D82444451C001FE22C /* SwiftAssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAssignmentUITests.swift; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				858AB00224484C1D00A19318 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		858AAFF92448483900A19318 /* Tests Assets */ = {
+			isa = PBXGroup;
+			children = (
+				858AB00024484B9200A19318 /* TestData.json */,
+			);
+			path = "Tests Assets";
+			sourceTree = "<group>";
+		};
 		85B481AA2444451A001FE22C = {
 			isa = PBXGroup;
 			children = (
@@ -159,8 +175,11 @@
 		85B481CC2444451C001FE22C /* SwiftAssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
-				85B481CD2444451C001FE22C /* SwiftAssignmentTests.swift */,
+				858AAFF92448483900A19318 /* Tests Assets */,
 				85B481CF2444451C001FE22C /* Info.plist */,
+				858AAFFA2448486600A19318 /* SwiftAssignmentBaseTest.swift */,
+				858AAFFC2448495D00A19318 /* DataTableviewCellTests.swift */,
+				858AAFFE24484AB800A19318 /* DataViewModelTests.swift */,
 			);
 			path = SwiftAssignmentTests;
 			sourceTree = "<group>";
@@ -370,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				858AB00124484B9200A19318 /* TestData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +444,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85B481CE2444451C001FE22C /* SwiftAssignmentTests.swift in Sources */,
+				858AAFFB2448486600A19318 /* SwiftAssignmentBaseTest.swift in Sources */,
+				858AAFFF24484AB800A19318 /* DataViewModelTests.swift in Sources */,
+				858AAFFD2448495D00A19318 /* DataTableviewCellTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +647,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SwiftAssignmentTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -646,6 +672,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SwiftAssignmentTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (

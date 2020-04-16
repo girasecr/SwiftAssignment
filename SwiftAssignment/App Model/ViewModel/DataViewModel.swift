@@ -16,14 +16,13 @@ protocol ReachabilityProtocol: NSObjectProtocol {
 
 class DataViewModel {
     
-    /// Callback to pass the selected place.
+    //**************************************************
+    // MARK: Properties
+    //**************************************************
     var dataModel: DataModel?
     let reachability = try? Reachability()
     weak var reachabilityDelegate: ReachabilityProtocol?
-    
-    /// Callback to Update map.
     var updateUI: () -> Void = { }
-    
     var numberOfRows = 0
     var navTitle: String = ""
     var rowsArray: [Row] = []
@@ -32,6 +31,9 @@ class DataViewModel {
         loadApiData()
     }
     
+    //**************************************************
+    // MARK: - Required Methods
+    //**************************************************
     func loadApiData() {
         self.getApiData(complete: { [weak self] (dataModel) in
             self?.dataModel = dataModel
@@ -48,7 +50,6 @@ class DataViewModel {
     }
     
     func getApiData(complete:@escaping (DataModel?) -> Void) {
-        
         let apiConfiguration = APIConfiguration(httpMethod: .get)
         
         RequestManager.sharedInstance.withGet(apiConfiguration: apiConfiguration) { json, _ in
@@ -70,18 +71,13 @@ class DataViewModel {
 //**************************************************
 // MARK: - Reachability Listner Methods
 //**************************************************
-
 extension DataViewModel {
     func addReachabilityNotifier() {
-        //Show Alert if no internet connection
-        
         reachability?.whenReachable = { [weak self] reachability in
-            
             self?.reachabilityDelegate?.networkConnectionDidConnected()
         }
         
         reachability?.whenUnreachable = {  [weak self] _ in
-            
             self?.reachabilityDelegate?.networkConnectionDidDisconnected()
         }
         

@@ -16,7 +16,6 @@ class DataTableviewCell: UITableViewCell {
     //**************************************************
     // MARK: Properties/Constants
     //**************************************************
-    
     struct CONSTANTS {
         static let cellIdentifier = "DataTableviewCell"
     }
@@ -71,14 +70,12 @@ class DataTableviewCell: UITableViewCell {
     //**************************************************
     // MARK: Initializer
     //**************************************************
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.contentView.addSubview(profileImageView)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(descriptionLabel)
-        
         setAutolayoutConstraintToViews()
     }
     
@@ -89,10 +86,7 @@ class DataTableviewCell: UITableViewCell {
     //**************************************************
     // MARK: Private Methods
     //**************************************************
-    
     private func setAutolayoutConstraintToViews() {
-        //SnapKit Autolayout
-        
         profileImageView.snp.makeConstraints { make in
             make.centerY.equalTo(self.contentView.snp.centerY)
             make.leading.equalTo(self.contentView.snp.leading).offset(10)
@@ -114,11 +108,10 @@ class DataTableviewCell: UITableViewCell {
             make.height.greaterThanOrEqualTo(21)
         }
     }
-       
+    
     private func setImage(from url: String) {
         guard let imageURL = URL(string: url) else { return }
         let placeholderImage = UIImage(named: "defaultthumb.png")
-        
         self.profileImageView.af.setImage(withURL: imageURL, placeholderImage: placeholderImage)
     }
 }

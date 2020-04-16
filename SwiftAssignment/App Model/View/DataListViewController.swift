@@ -14,7 +14,6 @@ class DataListViewController: UIViewController {
     //**************************************************
     // MARK: Properties/Constants
     //**************************************************
-    
     struct CONSTANTS {
         static let pullToRefresh = "Pull to refresh"
         static let alertTitle = "No Internet Connection"
@@ -22,49 +21,34 @@ class DataListViewController: UIViewController {
         static let alertButtonTitle = "Ok"
     }
     
-    private var viewModel: DataViewModel? // ViewModel
-    let tableView = UITableView() // view
+    private var viewModel: DataViewModel?
+    let tableView = UITableView() 
     var refreshControl = UIRefreshControl()
     
     //**************************************************
     // MARK: View life cycle
     //**************************************************
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
-        
         setupTavleview()
         loadModelData()
         setupPullToRefresh()
     }
     
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        super.viewWillAppear(animated)
-    //        addReachabilityNotifier()
-    //    }
-    
     //**************************************************
     // MARK: - Required Methods
     //**************************************************
-    
     private func setupTavleview() {
         view.addSubview(tableView)
-        
-        //Add tableview constraint
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        //Set tableview delegate and datasource
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = false
-        
-        //Register tableview cell
         tableView.register(DataTableviewCell.self, forCellReuseIdentifier: DataTableviewCell.cellIdentifier())
         tableView.tableFooterView = UIView()
     }
@@ -72,11 +56,10 @@ class DataListViewController: UIViewController {
     private func loadModelData() {
         viewModel = DataViewModel()
         viewModel?.addReachabilityNotifier()
-        viewModel?.reachabilityDelegate = self //Setting reachability delegate
+        viewModel?.reachabilityDelegate = self
         observeEvents()
     }
     
-    /// Function to observe various event call backs from the viewmodel as well as Notifications.
     private func observeEvents() {
         viewModel?.updateUI = { [weak self] in
             DispatchQueue.main.async(execute: {
@@ -90,7 +73,6 @@ class DataListViewController: UIViewController {
 //**************************************************
 // MARK: Delegate methods UITableViewDataSource, UITableViewDelegate
 //**************************************************
-
 extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,7 +82,6 @@ extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: DataTableviewCell.cellIdentifier(), for: indexPath) as? DataTableviewCell
-        
         let rowData = viewModel?.rowsArray[indexPath.row]
         cell?.row = rowData
         cell?.layer.shouldRasterize = true
@@ -117,7 +98,6 @@ extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
 //**************************************************
 // MARK: Pull to refresh
 //**************************************************
-
 extension DataListViewController {
     
     private func setupPullToRefresh() {
@@ -127,9 +107,8 @@ extension DataListViewController {
     }
     
     @objc func refresh() {
-        // Code to refresh table view
         DispatchQueue.main.async(execute: {
-            self.tableView.reloadData()
+            self.viewModel?.loadApiData()
             self.refreshControl.endRefreshing()
         })
     }
@@ -138,17 +117,14 @@ extension DataListViewController {
 //**************************************************
 // MARK: - Reachability Delegate Methods
 //**************************************************
-
 extension DataListViewController: ReachabilityProtocol {
     func networkConnectionDidConnected() {
-        
         DispatchQueue.main.async {
             self.viewModel?.loadApiData()
         }
     }
     
     func networkConnectionDidDisconnected() {
-        
         DispatchQueue.main.async {
             let alert = UIAlertController(title: CONSTANTS.alertTitle, message: CONSTANTS.alertMessage, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: CONSTANTS.alertButtonTitle, style: UIAlertAction.Style.default, handler: nil))
