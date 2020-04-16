@@ -16,9 +16,9 @@ class DataListViewController: UIViewController {
     //**************************************************
     struct CONSTANTS {
         static let pullToRefresh = "Pull to refresh"
-        static let alertTitle = "No Internet Connection"
-        static let alertMessage = "Internet Connection is required fot this application to run properly"
-        static let alertButtonTitle = "Ok"
+        static let aTitle = "No Internet Connection"
+        static let aMsg = "Internet Connection is required fot this application to run properly"
+        static let aButtonName = "Ok"
     }
     
     private var viewModel: DataViewModel?
@@ -80,8 +80,9 @@ extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellId = DataTableviewCell.cellIdentifier()
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: DataTableviewCell.cellIdentifier(), for: indexPath) as? DataTableviewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? DataTableviewCell
         let rowData = viewModel?.rowsArray[indexPath.row]
         cell?.row = rowData
         cell?.layer.shouldRasterize = true
@@ -126,8 +127,9 @@ extension DataListViewController: ReachabilityProtocol {
     
     func networkConnectionDidDisconnected() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: CONSTANTS.alertTitle, message: CONSTANTS.alertMessage, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: CONSTANTS.alertButtonTitle, style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: CONSTANTS.aTitle, message: CONSTANTS.aMsg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: CONSTANTS.aButtonName, style: .default, handler: nil))
+            
             self.present(alert, animated: true, completion: nil)
         }
     }

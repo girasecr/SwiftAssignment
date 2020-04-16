@@ -38,8 +38,9 @@ class APIConfiguration {
     fileprivate func httpBody() -> Data? {
         var data: Data?
         if let jsonData = self.requestObject?.toJSONData() {
-            let jsonString = String(data: jsonData, encoding: .utf8) ?? ""
-            data = jsonString.replacingOccurrences(of: "\\", with: "", options: .literal, range: nil).data(using: .utf8, allowLossyConversion: false)
+            var jsonString = String(data: jsonData, encoding: .utf8) ?? ""
+            jsonString = jsonString.replacingOccurrences(of: "\\", with: "", options: .literal, range: nil)
+            data = jsonString.data(using: .utf8, allowLossyConversion: false)
         }
         return data
     }
