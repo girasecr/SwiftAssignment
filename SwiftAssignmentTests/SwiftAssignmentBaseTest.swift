@@ -12,7 +12,6 @@ import XCTest
 let kTimeOut = 10.0
 
 class SwiftAssignmentBaseTest: XCTestCase {
-
     //**************************************************
     // MARK: Test Cases Life Cycle
     //**************************************************
@@ -29,7 +28,6 @@ class SwiftAssignmentBaseTest: XCTestCase {
     //**************************************************
     func getAPIData(forResource: String, ofType: String, completion: @escaping(Data?, Error?) -> Void) {
         let testBundle = Bundle(for: type(of: self))
-
         if let path = testBundle.path(forResource: forResource, ofType: ofType) {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)

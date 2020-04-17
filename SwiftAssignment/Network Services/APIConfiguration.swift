@@ -30,7 +30,6 @@ class APIConfiguration {
     }
 
     fileprivate func getUrl() -> URL? {
-
         let urlString = String(format: "%@%@", Basic.url, self.extraParameters)
         return URL.init(string: urlString)
     }

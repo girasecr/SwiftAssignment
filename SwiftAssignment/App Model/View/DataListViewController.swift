@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class DataListViewController: UIViewController {
-
     //**************************************************
     // MARK: Properties/Constants
     //**************************************************
@@ -76,20 +75,17 @@ class DataListViewController: UIViewController {
 // MARK: Delegate methods UITableViewDataSource, UITableViewDelegate
 //**************************************************
 extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRows ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = DataTableviewCell.cellIdentifier()
-
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? DataTableviewCell
         let rowData = viewModel?.rowsArray[indexPath.row]
         cell?.row = rowData
         cell?.layer.shouldRasterize = true
         cell?.layer.rasterizationScale = UIScreen.main.scale
-
         return cell ?? UITableViewCell()
     }
 
@@ -102,7 +98,6 @@ extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: Pull to refresh
 //**************************************************
 extension DataListViewController {
-
     private func setupPullToRefresh() {
         refreshControl.attributedTitle = NSAttributedString(string: CONSTANTS.pullToRefresh)
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
@@ -136,7 +131,6 @@ extension DataListViewController: ReachabilityProtocol {
     func showNeworkAlert() {
         let alert = UIAlertController(title: CONSTANTS.aTitle, message: CONSTANTS.aMsg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: CONSTANTS.aButtonName, style: .default, handler: nil))
-
         self.present(alert, animated: true, completion: nil)
     }
 }

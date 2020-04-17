@@ -15,7 +15,6 @@ protocol ReachabilityProtocol: NSObjectProtocol {
 }
 
 class DataViewModel {
-
     //**************************************************
     // MARK: Properties
     //**************************************************
@@ -51,7 +50,6 @@ class DataViewModel {
 
     func getApiData(complete:@escaping (DataModel?) -> Void) {
         let apiConfiguration = APIConfiguration(httpMethod: .get)
-
         RequestManager.sharedInstance.withGet(apiConfiguration: apiConfiguration) { json, _ in
             if let response = json {
                 let jsonData = response.data(using: .utf8)!
@@ -76,11 +74,9 @@ extension DataViewModel {
         reachability?.whenReachable = { [weak self] reachability in
             self?.reachabilityDelegate?.networkConnectionDidConnected()
         }
-
         reachability?.whenUnreachable = {  [weak self] _ in
             self?.reachabilityDelegate?.networkConnectionDidDisconnected()
         }
-
         do {
             try reachability?.startNotifier()
         } catch {  }

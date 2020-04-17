@@ -10,7 +10,6 @@ import XCTest
 @testable import SwiftAssignment
 
 class DataListViewControllerTests: XCTestCase {
-
     var dataController: DataListViewController!
 
     struct CONSTANTS {
@@ -23,18 +22,14 @@ class DataListViewControllerTests: XCTestCase {
     //**************************************************
     override func setUp() {
         super.setUp()
-
         self.dataController = DataListViewController()
         self.dataController.loadView()
         self.dataController.viewDidLoad()
-
         let expectation = XCTestExpectation(description: CONSTANTS.apiExpectation)
-
         self.dataController.viewModel?.getApiData(complete: { (model) in
             XCTAssertNotNil(model, "No data was downloaded.")
             expectation.fulfill()
         })
-
         wait(for: [expectation], timeout: kTimeOut)
     }
 
@@ -70,14 +65,12 @@ class DataListViewControllerTests: XCTestCase {
     func testTableViewCellHasReuseIdentifier() {
         let index = IndexPath(row: 0, section: 0)
         let cell = dataController.tableView(dataController.tableView, cellForRowAt: index) as? DataTableviewCell
-
         let actualReuseIdentifer = cell?.reuseIdentifier
         let expectedReuseIdentifier = CONSTANTS.cellIdentifier
         XCTAssertEqual(actualReuseIdentifer, expectedReuseIdentifier)
     }
 
     func testTableCellHasCorrectLabelText() {
-
         let index0 = IndexPath(row: 0, section: 0)
         let cell0 = dataController.tableView(dataController.tableView, cellForRowAt: index0) as? DataTableviewCell
         XCTAssertNotNil(cell0?.titleLabel.text)

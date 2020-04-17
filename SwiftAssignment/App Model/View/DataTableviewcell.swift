@@ -12,7 +12,6 @@ import AlamofireImage
 import SnapKit
 
 class DataTableviewCell: UITableViewCell {
-
     //**************************************************
     // MARK: Properties/Constants
     //**************************************************
@@ -32,7 +31,6 @@ class DataTableviewCell: UITableViewCell {
             guard let rowItem = row else {return}
             titleLabel.text = rowItem.title
             descriptionLabel.text = rowItem.rowDescription
-
             if let imageURL = rowItem.imageHref {
                 setImage(from: imageURL)
             } else {
@@ -43,8 +41,8 @@ class DataTableviewCell: UITableViewCell {
 
     let profileImageView: UIImageView = {
         let img = UIImageView()
-        img.contentMode = .scaleAspectFill // image will never be strecthed vertially or horizontally
-        img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
         img.layer.cornerRadius = 5
         img.clipsToBounds = true
         img.accessibilityIdentifier = CONSTANTS.profileImageAccessibilityIdentifier
@@ -77,7 +75,6 @@ class DataTableviewCell: UITableViewCell {
     //**************************************************
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         self.contentView.addSubview(profileImageView)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(descriptionLabel)
@@ -97,14 +94,12 @@ class DataTableviewCell: UITableViewCell {
             make.leading.equalTo(self.contentView.snp.leading).offset(10)
             make.size.equalTo(CGSize(width: 60, height: 60))
         }
-
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(self.contentView.snp.top).offset(0)
             make.leading.equalTo(self.profileImageView.snp.leading).offset(70)
             make.trailing.equalTo(self.contentView.snp.trailing).offset(-10)
             make.height.equalTo(40)
         }
-
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(0)
             make.leading.equalTo(self.titleLabel.snp.leading)

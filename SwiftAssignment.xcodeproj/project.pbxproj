@@ -292,12 +292,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85B481DD2444451C001FE22C /* Build configuration list for PBXNativeTarget "SwiftAssignment" */;
 			buildPhases = (
+				858F926D24471EE500927981 /* ShellScript */,
 				F777696A82B475100FF9F0A6 /* [CP] Check Pods Manifest.lock */,
 				85B481AF2444451A001FE22C /* Sources */,
 				85B481B02444451A001FE22C /* Frameworks */,
 				85B481B12444451A001FE22C /* Resources */,
 				85FF530C2444626C00F1929F /* Embed Frameworks */,
-				858F926D24471EE500927981 /* ShellScript */,
 				6EB64CF2182497055F1382FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -448,7 +448,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		F777696A82B475100FF9F0A6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class RequestManager {
-
     class var sharedInstance: RequestManager {
         struct Singleton {
             static let instance = RequestManager()
@@ -21,7 +20,6 @@ class RequestManager {
     func withGet(apiConfiguration: APIConfiguration, completionHandler: @escaping JSONCompletionHandler) {
         let configuration = apiConfiguration.configuration()
         let session = URLSession(configuration: configuration)
-
         if let urlRequest = apiConfiguration.getURLRequest() {
             session.dataTask(with: urlRequest) { (data, _, error) in
                 if let data = data {
@@ -40,7 +38,6 @@ class RequestManager {
     func withPost(apiConfiguration: APIConfiguration, completionHandler: @escaping JSONCompletionHandler) {
         let configuration = apiConfiguration.configuration()
         let session = URLSession(configuration: configuration)
-
         if let urlRequest = apiConfiguration.postURLRequest() {
             session.dataTask(with: urlRequest) { (data, _, error) in
                 if let data = data {
