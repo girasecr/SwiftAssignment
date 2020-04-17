@@ -10,9 +10,7 @@ import XCTest
 @testable import SwiftAssignment
 
 class DataViewModelTests: SwiftAssignmentBaseTest {
-    //**************************************************
-    // MARK: Test Cases Life Cycle
-    //**************************************************
+    // MARK: - Test Cases Life Cycle
     override func setUp() {
         super.setUp()
     }
@@ -21,9 +19,7 @@ class DataViewModelTests: SwiftAssignmentBaseTest {
         super.tearDown()
     }
 
-    //**************************************************
-    // MARK: Model functions - Test Get api data frunction with json file
-    //**************************************************
+    // MARK: - Model functions - Test Get api data frunction with json file
     func testGetApiData() {
         let expect = XCTestExpectation.init(description: "testDataApiResponse")
         getModelData(forResource: "TestData", ofType: "json") {(data, _) in

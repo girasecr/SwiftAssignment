@@ -12,9 +12,7 @@ import XCTest
 let kTimeOut = 10.0
 
 class SwiftAssignmentBaseTest: XCTestCase {
-    //**************************************************
-    // MARK: Test Cases Life Cycle
-    //**************************************************
+    // MARK: - Test Cases Life Cycle
     override func setUp() {
         super.setUp()
     }
@@ -23,9 +21,7 @@ class SwiftAssignmentBaseTest: XCTestCase {
         super.tearDown()
     }
 
-    //**************************************************
-    // MARK: Load API Data from the Local JSON file instead of going to the Back-End
-    //**************************************************
+    // MARK: - Load API Data from the Local JSON file instead of going to the Back-End
     func getAPIData(forResource: String, ofType: String, completion: @escaping(Data?, Error?) -> Void) {
         let testBundle = Bundle(for: type(of: self))
         if let path = testBundle.path(forResource: forResource, ofType: ofType) {
@@ -44,9 +40,7 @@ class SwiftAssignmentBaseTest: XCTestCase {
         getAPIData(forResource: forResource, ofType: ofType, completion: completion)
     }
 
-    //**************************************************
-    // MARK: Common Methods
-    //**************************************************
+    // MARK: - Common Methods
     func testCheckAPIResponse(urlRequest: URLRequest) {
         let expectation = XCTestExpectation(description: "Connect to API Server")
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, _, _) in

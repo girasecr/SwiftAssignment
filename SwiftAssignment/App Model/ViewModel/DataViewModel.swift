@@ -15,9 +15,7 @@ protocol ReachabilityProtocol: NSObjectProtocol {
 }
 
 class DataViewModel {
-    //**************************************************
-    // MARK: Properties
-    //**************************************************
+    // MARK: - Properties
     var dataModel: DataModel?
     let reachability = try? Reachability()
     weak var reachabilityDelegate: ReachabilityProtocol?
@@ -30,9 +28,7 @@ class DataViewModel {
         loadApiData()
     }
 
-    //**************************************************
     // MARK: - Required Methods
-    //**************************************************
     func loadApiData() {
         self.getApiData(complete: { [weak self] (dataModel) in
             self?.dataModel = dataModel
@@ -66,9 +62,7 @@ class DataViewModel {
     }
 }
 
-//**************************************************
 // MARK: - Reachability Listner Methods
-//**************************************************
 extension DataViewModel {
     func addReachabilityNotifier() {
         reachability?.whenReachable = { [weak self] reachability in

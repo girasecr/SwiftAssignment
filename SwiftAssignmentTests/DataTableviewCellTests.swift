@@ -10,12 +10,11 @@ import XCTest
 @testable import SwiftAssignment
 
 class DataTableviewCellTests: XCTestCase {
+    // MARK: - Properties
     var profileImageView: UIImageView!
     var tempImageUrl: String = "https://i49.photobucket.com/albums/f260/starfoxfan/fursona.jpg"
 
-    //**************************************************
-    // MARK: Test Cases Life Cycle
-    //**************************************************
+    // MARK: - Test Cases Life Cycle
     override func setUp() {
         profileImageView = UIImageView()
     }
@@ -24,6 +23,7 @@ class DataTableviewCellTests: XCTestCase {
          super.tearDown()
     }
 
+    // MARK: - Table cell profile image test cases
     func testSetImageWithValidUrl() {
         XCTAssertNotNil(tempImageUrl)
         let imageURL = URL(string: tempImageUrl)

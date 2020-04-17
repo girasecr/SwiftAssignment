@@ -10,16 +10,14 @@ import XCTest
 @testable import SwiftAssignment
 
 class DataListViewControllerTests: XCTestCase {
+    // MARK: - Properties/Constants
     var dataController: DataListViewController!
-
     struct CONSTANTS {
         static let cellIdentifier = "DataTableviewCell"
         static let apiExpectation = "Download Data from server"
     }
 
-    //**************************************************
-    // MARK: UITest Cases Life Cycle
-    //**************************************************
+    // MARK: - UITest Cases Life Cycle
     override func setUp() {
         super.setUp()
         self.dataController = DataListViewController()
@@ -37,9 +35,7 @@ class DataListViewControllerTests: XCTestCase {
         super.tearDown()
     }
 
-    //**************************************************
-    // MARK: Data Tableview Test Cases
-    //**************************************************
+    // MARK: - Data Tableview Test Cases
     func testHasATableView() {
         XCTAssertNotNil(dataController.tableView)
     }

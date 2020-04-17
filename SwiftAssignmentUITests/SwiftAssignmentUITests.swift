@@ -11,12 +11,10 @@ import XCTest
 let kTimeOut = 8.0
 
 class SwiftAssignmentUITests: XCTestCase {
-
+    // MARK: - Properties
     var app: XCUIApplication!
 
-    //**************************************************
-    // MARK: UITest Cases Life Cycle
-    //**************************************************
+    // MARK: - UITest Cases Life Cycle
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
@@ -27,31 +25,21 @@ class SwiftAssignmentUITests: XCTestCase {
         super.tearDown()
     }
 
-    //**************************************************
-    // MARK: Data Tableview Test Cases
-    //**************************************************
+    // MARK: - Data Tableview Test Cases
     func testTableInteraction() {
         app.launch()
 
-        // Assert that we are displaying the tableview
         let articleTableView = app.tables["table--dataTableView"]
         _ = articleTableView.waitForExistence(timeout: kTimeOut)
-
         XCTAssertTrue(articleTableView.exists, "The article tableview exists")
 
-        // Get an array of cells
         let tableCells = articleTableView.cells
-
         if tableCells.count > 0 {
             let count: Int = (tableCells.count - 1)
-
             let promise = expectation(description: "Wait for table cells")
-
             for index in stride(from: 0, to: count, by: 1) {
-                // Grab the first cell and verify that it exists and tap it
                 let tableCell = tableCells.element(boundBy: index)
                 XCTAssertTrue(tableCell.exists, "The \(index) cell is in place on the table")
-                // Does this actually take us to the next screen
                 tableCell.tap()
 
                 if index == (count - 1) {

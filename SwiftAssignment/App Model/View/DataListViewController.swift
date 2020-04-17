@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class DataListViewController: UIViewController {
-    //**************************************************
-    // MARK: Properties/Constants
-    //**************************************************
+    // MARK: - Properties/Constants
     struct CONSTANTS {
         static let pullToRefresh = "Pull to refresh"
         static let aTitle = "No Internet Connection"
@@ -25,9 +23,7 @@ class DataListViewController: UIViewController {
     let tableView = UITableView()
     var refreshControl = UIRefreshControl()
 
-    //**************************************************
-    // MARK: View life cycle
-    //**************************************************
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -36,9 +32,7 @@ class DataListViewController: UIViewController {
         setupPullToRefresh()
     }
 
-    //**************************************************
     // MARK: - Required Methods
-    //**************************************************
     private func setupTavleview() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,9 +65,7 @@ class DataListViewController: UIViewController {
     }
 }
 
-//**************************************************
-// MARK: Delegate methods UITableViewDataSource, UITableViewDelegate
-//**************************************************
+// MARK: - Delegate methods UITableViewDataSource, UITableViewDelegate
 extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRows ?? 0
@@ -94,9 +86,7 @@ extension DataListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//**************************************************
-// MARK: Pull to refresh
-//**************************************************
+// MARK: - Pull to refresh
 extension DataListViewController {
     private func setupPullToRefresh() {
         refreshControl.attributedTitle = NSAttributedString(string: CONSTANTS.pullToRefresh)
@@ -112,9 +102,7 @@ extension DataListViewController {
     }
 }
 
-//**************************************************
 // MARK: - Reachability Delegate Methods
-//**************************************************
 extension DataListViewController: ReachabilityProtocol {
     func networkConnectionDidConnected() {
         DispatchQueue.main.async {

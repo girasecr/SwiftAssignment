@@ -12,9 +12,7 @@ import AlamofireImage
 import SnapKit
 
 class DataTableviewCell: UITableViewCell {
-    //**************************************************
-    // MARK: Properties/Constants
-    //**************************************************
+    // MARK: - Properties/Constants
     struct CONSTANTS {
         static let cellIdentifier = "DataTableviewCell"
         static let titleAccessibilityIdentifier = "label-cellTitleLabel"
@@ -70,9 +68,7 @@ class DataTableviewCell: UITableViewCell {
         return label
     }()
 
-    //**************************************************
-    // MARK: Initializer
-    //**************************************************
+    // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(profileImageView)
@@ -85,9 +81,7 @@ class DataTableviewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
 
-    //**************************************************
-    // MARK: Private Methods
-    //**************************************************
+    // MARK: - Private Methods
     private func setAutolayoutConstraintToViews() {
         profileImageView.snp.makeConstraints { make in
             make.centerY.equalTo(self.contentView.snp.centerY)
