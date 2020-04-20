@@ -18,6 +18,8 @@ class DataTableviewCell: UITableViewCell {
         static let titleAccessibilityIdentifier = "label-cellTitleLabel"
         static let descAccessibilityIdentifier = "label--cellDescriptionLabel"
         static let profileImageAccessibilityIdentifier = "imageView--cellProfileImageView"
+        static let noName = "<No Name>"
+        static let noDescription = "<No Description>"
     }
 
     static func cellIdentifier() -> String {
@@ -27,8 +29,8 @@ class DataTableviewCell: UITableViewCell {
     var row: Row? {
         didSet {
             guard let rowItem = row else {return}
-            titleLabel.text = rowItem.title
-            descriptionLabel.text = rowItem.rowDescription
+            titleLabel.text = rowItem.title ?? CONSTANTS.noName
+            descriptionLabel.text = rowItem.rowDescription ?? CONSTANTS.noDescription
             if let imageURL = rowItem.imageHref {
                 setImage(from: imageURL)
             } else {
