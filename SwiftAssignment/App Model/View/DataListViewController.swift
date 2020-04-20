@@ -22,6 +22,7 @@ class DataListViewController: UIViewController {
     var viewModel: DataViewModel?
     let tableView = UITableView()
     var refreshControl = UIRefreshControl()
+    var activityIndicatorView: UIActivityIndicatorView?
 
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -46,6 +47,13 @@ class DataListViewController: UIViewController {
         tableView.accessibilityIdentifier = CONSTANTS.tableAccessibilityIdentifier
         tableView.register(DataTableviewCell.self, forCellReuseIdentifier: DataTableviewCell.cellIdentifier())
         tableView.tableFooterView = UIView()
+        setupProcessIndicatorView()
+    }
+
+    private func setupProcessIndicatorView() {
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        tableView.backgroundView = activityIndicatorView
+        activityIndicatorView?.startAnimating()
     }
 
     private func loadModelData() {
@@ -60,6 +68,7 @@ class DataListViewController: UIViewController {
             DispatchQueue.main.async(execute: {
                 self?.title = self?.viewModel?.navTitle
                 self?.tableView.reloadData()
+                self?.activityIndicatorView?.stopAnimating()
             })
         }
     }
